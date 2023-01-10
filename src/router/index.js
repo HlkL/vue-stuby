@@ -67,6 +67,26 @@ export const constantRouterMap = [
     ]
   },
 
+  //数据字典
+  {
+    path: '/dict',
+    component: Layout,
+    redirect: '/dict/list',
+    name: '数据字典管理',
+    meta: { title: '数据字典管理', icon: 'example' },
+    alwaysShow: true,   //始终显示子目录
+    children: [
+      {
+        path: 'list',
+        name: '数据字典',
+        //设置跳转页面路径
+        component: () => import('@/views/dict/list'),
+        meta: { title: '数据字典', icon: 'table' }
+      }
+    ]
+  },
+
+
   //路由模板
   {
     path: '/example',
