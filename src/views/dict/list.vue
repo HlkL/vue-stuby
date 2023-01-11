@@ -4,7 +4,11 @@
 
         <div class="el-toolbar">
             <div class="el-toolbar-body" style="justify-content: flex-start;">
-                <el-button type="text" @click="exportData"><i class="fa fa-plus"/> 字典数据导出</el-button>
+                <!-- 在新的标签页打开 -->
+                <a href="http://localhost:8202/admin/common/dict/exportData" target="_blank">
+                    <el-button type="text"><i class="fa fa-plus"/> 字典数据导出</el-button>
+                </a>
+                <!-- <el-button type="text" @click="exportData"><i class="fa fa-plus"/> 字典数据导出</el-button> -->
             </div>
         </div>
 
