@@ -41,29 +41,49 @@ export const constantRouterMap = [
     path: '/hospSet',
     component: Layout,
     redirect: '/hospSet/list',
-    name: '医院设置管理',
-    meta: { title: '医院设置管理', icon: 'example' },
+    name: '医院管理',
+    meta: { title: '医院管理', icon: 'form' },
     children: [
       {
         path: 'list',
         name: '医院设置列表',
         //设置跳转页面路径
         component: () => import('@/views/hospSet/list'),
-        meta: { title: '医院设置列表', icon: 'table' }
+        meta: { title: '医院设置列表' }
       },
       {
         path: 'add',
         name: '添加医院设置',
         component: () => import('@/views/hospSet/add'),
-        meta: { title: '添加医院设置', icon: 'tree' }
+        meta: { title: '添加医院设置' }
       },
       {
         path: 'edit/:id',
-        name: 'EduTeacherEdit',
+        name: '编辑',
         component: () =>import('@/views/hospSet/add'),
         meta: { title: '编辑', noCache: true },
         hidden: true
-      }
+      },
+      {
+        path: 'hosp/list',
+        name: '医院列表',
+        component: () =>import('@/views/hosp/list'),
+        meta: { title: '医院列表'},
+      },
+      {
+        path: 'hosp/show/:id',
+        name: '医院详情',
+        component: () =>import('@/views/hosp/show'),
+        meta: { title: '医院详情', noCache: true },
+        hidden: true
+      },
+      {
+        path: 'department/schedule/:hoscode',
+        name: '科室排班详情',
+        component: () =>import('@/views/hosp/schedule'),
+        meta: { title: '科室排班详情', noCache: true },
+        hidden: true
+      },
     ]
   },
 
@@ -73,7 +93,7 @@ export const constantRouterMap = [
     component: Layout,
     redirect: '/dict/list',
     name: '数据字典管理',
-    meta: { title: '数据字典管理', icon: 'example' },
+    meta: { title: '数据字典管理', icon: 'tree' },
     alwaysShow: true,   //始终显示子目录
     children: [
       {
@@ -81,7 +101,7 @@ export const constantRouterMap = [
         name: '数据字典',
         //设置跳转页面路径
         component: () => import('@/views/dict/list'),
-        meta: { title: '数据字典', icon: 'table' }
+        meta: { title: '数据字典' }
       }
     ]
   },
@@ -111,89 +131,89 @@ export const constantRouterMap = [
     ]
   },
 
-  {
-    path: '/form',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
-      }
-    ]
-  },
+  // {
+  //   path: '/form',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       name: 'Form',
+  //       component: () => import('@/views/form/index'),
+  //       meta: { title: 'Form', icon: 'form' }
+  //     }
+  //   ]
+  // },
 
-  {
-    path: '/nested',
-    component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
-    meta: {
-      title: 'Nested',
-      icon: 'nested'
-    },
-    children: [
-      {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
-          }
-        ]
-      },
-      {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        meta: { title: 'menu2' }
-      }
-    ]
-  },
+  // {
+  //   path: '/nested',
+  //   component: Layout,
+  //   redirect: '/nested/menu1',
+  //   name: 'Nested',
+  //   meta: {
+  //     title: 'Nested',
+  //     icon: 'nested'
+  //   },
+  //   children: [
+  //     {
+  //       path: 'menu1',
+  //       component: () => import('@/views/nested/menu1/index'), // Parent router-view
+  //       name: 'Menu1',
+  //       meta: { title: 'Menu1' },
+  //       children: [
+  //         {
+  //           path: 'menu1-1',
+  //           component: () => import('@/views/nested/menu1/menu1-1'),
+  //           name: 'Menu1-1',
+  //           meta: { title: 'Menu1-1' }
+  //         },
+  //         {
+  //           path: 'menu1-2',
+  //           component: () => import('@/views/nested/menu1/menu1-2'),
+  //           name: 'Menu1-2',
+  //           meta: { title: 'Menu1-2' },
+  //           children: [
+  //             {
+  //               path: 'menu1-2-1',
+  //               component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
+  //               name: 'Menu1-2-1',
+  //               meta: { title: 'Menu1-2-1' }
+  //             },
+  //             {
+  //               path: 'menu1-2-2',
+  //               component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
+  //               name: 'Menu1-2-2',
+  //               meta: { title: 'Menu1-2-2' }
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           path: 'menu1-3',
+  //           component: () => import('@/views/nested/menu1/menu1-3'),
+  //           name: 'Menu1-3',
+  //           meta: { title: 'Menu1-3' }
+  //         }
+  //       ]
+  //     },
+  //     {
+  //       path: 'menu2',
+  //       component: () => import('@/views/nested/menu2/index'),
+  //       meta: { title: 'menu2' }
+  //     }
+  //   ]
+  // },
 
-  {
-    path: 'external-link',
-    component: Layout,
-    children: [
-      {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
-      }
-    ]
-  },
+  // {
+  //   path: 'external-link',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
+  //       meta: { title: 'External Link', icon: 'link' }
+  //     }
+  //   ]
+  // },
 
-  { path: '*', redirect: '/404', hidden: true }
+  // { path: '*', redirect: '/404', hidden: true }
 ]
 
 export default new Router({
