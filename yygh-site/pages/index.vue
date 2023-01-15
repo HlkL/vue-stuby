@@ -35,108 +35,44 @@
             <div class="filter-wrapper">
               <span class="label">等级：</span>
               <div class="condition-wrapper">
-                <span class="item v-link highlight clickable selected">
-                  全部 </span
-                ><span class="item v-link clickable"> 三级医院 </span
-                ><span class="item v-link clickable"> 二级医院 </span
-                ><span class="item v-link clickable"> 一级医院 </span>
+                  <span v-for="(item,index) in hostypeList" :key="index" class="item v-link clickable" 
+                  :class="hostypeActiveIndex == index ? 'selected' : ''"
+                  @click="hospTypeSelect( item.value,index )">{{item.name}}
+                  </span>
               </div>
             </div>
             <div class="filter-wrapper">
               <span class="label">地区：</span>
               <div class="condition-wrapper">
-                <span class="item v-link highlight clickable selected">
-                  全部 </span
-                ><span class="item v-link clickable"> 东城区 </span
-                ><span class="item v-link clickable"> 西城区 </span
-                ><span class="item v-link clickable"> 朝阳区 </span
-                ><span class="item v-link clickable"> 丰台区 </span
-                ><span class="item v-link clickable"> 石景山区 </span
-                ><span class="item v-link clickable"> 海淀区 </span
-                ><span class="item v-link clickable"> 门头沟区 </span
-                ><span class="item v-link clickable"> 房山区 </span
-                ><span class="item v-link clickable"> 通州区 </span
-                ><span class="item v-link clickable"> 顺义区 </span
-                ><span class="item v-link clickable"> 昌平区 </span
-                ><span class="item v-link clickable"> 大兴区 </span
-                ><span class="item v-link clickable"> 怀柔区 </span
-                ><span class="item v-link clickable"> 平谷区 </span
-                ><span class="item v-link clickable"> 密云区 </span
-                ><span class="item v-link clickable"> 延庆区 </span>
+                <span v-for="(item,index) in districtList" :key="index" class="item v-link clickable" 
+                  :class="provinceActiveIndex == index ? 'selected' : ''" 
+                  @click="districtSelect( item.value,index )">
+                  {{item.name}}
+                </span>
               </div>
             </div>
           </div>
         </div>
         <div class="v-scroll-list hospital-list">
-          <div class="v-card clickable list-item">
+          <div v-for="(item,index) in list" :key="index" class="v-card clickable list-item space" @click="show(item.hoscode)">
             <div class="">
               <div class="hospital-list-item hos-item" index="0">
                 <div class="wrapper">
-                  <div class="hospital-title">北京协和医院</div>
+                  <div class="hospital-title">{{item.hosname}}</div>
                   <div class="bottom-container">
                     <div class="icon-wrapper">
-                      <span class="iconfont"></span>
-                      三级甲等
+                      <span class="iconfont"></span>
+                      {{item.param.hospTypeString}}
                     </div>
                     <div class="icon-wrapper">
-                      <span class="iconfont"></span>
-                      每天8:30放号
+                      <span class="iconfont"></span>
+                      {{item.bookingRule.releaseTime}}放号
                     </div>
                   </div>
                 </div>
-                <img
-                  src="~assets/images/23176337663806575.png"
-                  alt="北京协和医院"
-                  class="hospital-img"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="v-card clickable list-item space">
-            <div class="">
-              <div class="hospital-list-item hos-item" index="0">
-                <div class="wrapper">
-                  <div class="hospital-title">北京协和医院</div>
-                  <div class="bottom-container">
-                    <div class="icon-wrapper">
-                      <span class="iconfont"></span>
-                      三级甲等
-                    </div>
-                    <div class="icon-wrapper">
-                      <span class="iconfont"></span>
-                      每天8:30放号
-                    </div>
-                  </div>
-                </div>
-                <img
-                src="~assets/images/23176337663806575.png"
-                  alt="北京协和医院"
-                  class="hospital-img"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="v-card clickable list-item">
-            <div class="">
-              <div class="hospital-list-item hos-item" index="0">
-                <div class="wrapper">
-                  <div class="hospital-title">北京协和医院</div>
-                  <div class="bottom-container">
-                    <div class="icon-wrapper">
-                      <span class="iconfont"></span>
-                      三级甲等
-                    </div>
-                    <div class="icon-wrapper">
-                      <span class="iconfont"></span>
-                      每天8:30放号
-                    </div>
-                  </div>
-                </div>
-                <img
-                src="~assets/images/23176337663806575.png"
-                  alt="北京协和医院"
-                  class="hospital-img"
-                />
+                <img :src="'data:image/jpeg;base64,'+item.logoData"
+                  alt="item.hosname"
+                  class="hospital-img"/>
               </div>
             </div>
           </div>
@@ -148,7 +84,7 @@
             <div class="title">常见科室</div>
             <div class="all-wrapper">
               <span>全部</span>
-              <span class="iconfont icon"></span>
+              <span class="iconfont icon"></span>
             </div>
           </div>
           <div class="content-wrapper">
@@ -166,13 +102,13 @@
           <div class="header-wrapper">
             <div class="title-wrapper">
               <div class="icon-wrapper">
-                <span class="iconfont title-icon"></span>
+                <span class="iconfont title-icon"></span>
               </div>
               <span class="title">平台公告</span>
             </div>
             <div class="all-wrapper">
               <span>全部</span>
-              <span class="iconfont icon"></span>
+              <span class="iconfont icon"></span>
             </div>
           </div>
           <div class="content-wrapper">
@@ -200,13 +136,13 @@
           <div class="header-wrapper">
             <div class="title-wrapper">
               <div class="icon-wrapper">
-                <span class="iconfont title-icon"></span>
+                <span class="iconfont title-icon"></span>
               </div>
               <span class="title">停诊公告</span>
             </div>
             <div class="all-wrapper">
               <span>全部</span>
-              <span class="iconfont icon"></span>
+              <span class="iconfont icon"></span>
             </div>
           </div>
           <div class="content-wrapper">
@@ -234,8 +170,121 @@
     </div>
   </div>
 </template>
-<script>
-export default {
 
-};
+<script>
+import api from "@/api/index";
+
+export default {
+  //服务端渲染,显示医院列表
+  asyncData({ params, error }) {
+    return api.getHospList(1, 10, null).then((response) => {
+      return {
+        list: response.data.content,
+        pages: response.data.totalPages,
+      };
+    });
+  },
+  data() {
+    return {
+      searchObj: {},
+      page: 1,
+      limit: 10,
+
+      hosname: "", //医院名称
+      hostypeList: [], //医院等级集合
+      districtList: [], //地区集合
+
+      hostypeActiveIndex: 0,
+      provinceActiveIndex: 0,
+      state: '',
+    };
+  },
+  created() {
+    this.init()
+  },
+  methods: {
+    init() {
+      api.queryChlidNodeByDictCode("Hostype").then((response) => {
+        //清空
+        this.hostypeList = [];
+        //添加'全部'字段
+        this.hostypeList.push({ name: "全部", value: "" });
+        //将接口放回的数据放入hostypeList
+        for (let i = 0; i < response.data.length; i++) {
+          this.hostypeList.push(response.data[i]);
+        }
+      });
+      //查询地区数据Beijin
+      api.queryChlidNodeByDictCode("Beijin").then((response) => {
+        this.districtList = [];
+        this.districtList.push({ name: "全部", value: "" });
+        for (let i = 0; i < response.data.length; i++) {
+          this.districtList.push(response.data[i]);
+        }
+      })
+    },
+    //查询医院列表
+    queryHospList(){
+      api.getHospList(this.page, this.limit,this.searchObj).then( response =>{
+        for( let i in response.data.content ){
+          this.list.push( response.data.content[i] )
+        }
+        this.page = response.data.totalPages
+      })
+    },
+    //根据医院等级查询医院
+    hospTypeSelect( hospType,index ){
+      this.list = []
+      this.page = 1
+      this.hostypeActiveIndex = index
+      this.searchObj.hostype = hospType
+      //查询医院
+      this.queryHospList()
+    },
+    //根据地区查询医院
+    districtSelect( districtCode,index ){
+      this.list = []
+      this.page = 1
+      this.provinceActiveIndex = index
+      this.searchObj.districtCode = districtCode
+      //查询医院
+      this.queryHospList()
+    },
+
+    //在输入框输入值，弹出下拉框，显示相关内容
+    querySearchAsync(queryString, cb) {
+      queryString=queryString.trim()
+      if (queryString == ""){cb([]);return;}
+      this.searchObj = []
+      if(queryString == '') return
+      api.getHospName(queryString).then(response => {
+        for (let i = 0, len = response.data.length; i <len; i++) {
+          response.data[i].value = response.data[i].hosname
+        }
+        cb(response.data)
+      })
+    },
+    //在下拉框选择某一个内容，执行下面方法，跳转到详情页面中
+    handleSelect(item) {
+      window.location.href = '/hospital/' + item.hoscode
+    },
+    //点击某个医院名称，跳转到详情页面中
+    show(hoscode) {
+      window.location.href = '/hospital/' + hoscode
+    },
+
+    
+
+
+
+  }
+}
+
 </script>
+
+/**
+Must use import ... 错误
+在终端中输入 npm uninstall axios 然后再安装旧的axios npm install axios@0.25.0 --save
+
+BUG-3解决方案：querySearchAsync方法中加入queryString=queryString.trim();if (queryString == ""){cb([]);return;}
+ */
