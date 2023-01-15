@@ -51,5 +51,46 @@
   </div>
 </template>
 <script>
-export default {};
+import api from "@/api/index";
+
+export default {
+  data() {
+    return {
+      searchObj: {},
+      page: 1,
+      limit: 10,
+
+      hosname: "", //医院名称
+      hostypeList: [], //医院等级集合
+      districtList: [], //地区集合
+
+      hostypeActiveIndex: 0,
+      provinceActiveIndex: 0,
+      state: '',
+    };
+  },
+  methods: {
+        //在输入框输入值，弹出下拉框，显示相关内容
+      querySearchAsync(queryString, cb) {
+      queryString=queryString.trim()
+      if (queryString == ""){cb([]);return;}
+      this.searchObj = []
+      if(queryString == '') return
+      api.getHospName(queryString).then(response => {
+        for (let i = 0, len = response.data.length; i <len; i++) {
+          response.data[i].value = response.data[i].hosname
+        }
+        cb(response.data)
+      })
+    },
+    //在下拉框选择某一个内容，执行下面方法，跳转到详情页面中
+    handleSelect(item) {
+      window.location.href = '/hospital/' + item.hoscode
+    },
+    //点击某个医院名称，跳转到详情页面中
+    show(hoscode) {
+      window.location.href = '/hospital/' + hoscode
+    },
+  }
+};
 </script>
