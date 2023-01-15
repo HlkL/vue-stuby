@@ -4,6 +4,9 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
+const _33d8e22e = () => interopDefault(import('..\\pages\\hospital\\detail\\_hoscode.vue' /* webpackChunkName: "pages/hospital/detail/_hoscode" */))
+const _0fb6e875 = () => interopDefault(import('..\\pages\\hospital\\notice\\_hoscode.vue' /* webpackChunkName: "pages/hospital/notice/_hoscode" */))
+const _164b1b1d = () => interopDefault(import('..\\pages\\hospital\\_hoscode.vue' /* webpackChunkName: "pages/hospital/_hoscode" */))
 const _7238070e = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
@@ -18,6 +21,18 @@ export const routerOptions = {
   scrollBehavior,
 
   routes: [{
+    path: "/hospital/detail/:hoscode?",
+    component: _33d8e22e,
+    name: "hospital-detail-hoscode"
+  }, {
+    path: "/hospital/notice/:hoscode?",
+    component: _0fb6e875,
+    name: "hospital-notice-hoscode"
+  }, {
+    path: "/hospital/:hoscode?",
+    component: _164b1b1d,
+    name: "hospital-hoscode"
+  }, {
     path: "/",
     component: _7238070e,
     name: "index"
