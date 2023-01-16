@@ -3,12 +3,19 @@ import request from '@/utils/request'
 const user = `/admin/user`
 
 export default {
-    //获取医院列表
+    //用户登录
     login( login ){
         return request({
-            url: `${user}/${login}`,
+            url: `${user}/login`,
             method: 'post',
             data: login
         })
     },
+    //发送验证码
+    sendCode( email ){
+        return request({
+            url: `${user}/sendCode/${email}`,
+            method: 'get'
+        })
+    }
 }

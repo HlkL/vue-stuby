@@ -3,24 +3,28 @@
     "name": "hospital-detail-hoscode",
     "path": "/hospital/detail/:hoscode?",
     "component": "E:\\\\Code\\\\Vue\\\\vue-dev\\\\yygh-site\\\\pages\\\\hospital\\\\detail\\\\_hoscode.vue",
-    "chunkName": "pages/hospital/detail/_hoscode"
+    "chunkName": "pages/hospital/detail/_hoscode",
+    "_name": "_33d8e22e"
   },
   {
     "name": "hospital-notice-hoscode",
     "path": "/hospital/notice/:hoscode?",
     "component": "E:\\\\Code\\\\Vue\\\\vue-dev\\\\yygh-site\\\\pages\\\\hospital\\\\notice\\\\_hoscode.vue",
-    "chunkName": "pages/hospital/notice/_hoscode"
+    "chunkName": "pages/hospital/notice/_hoscode",
+    "_name": "_0fb6e875"
   },
   {
     "name": "hospital-hoscode",
     "path": "/hospital/:hoscode?",
     "component": "E:\\\\Code\\\\Vue\\\\vue-dev\\\\yygh-site\\\\pages\\\\hospital\\\\_hoscode.vue",
-    "chunkName": "pages/hospital/_hoscode"
+    "chunkName": "pages/hospital/_hoscode",
+    "_name": "_164b1b1d"
   },
   {
     "name": "index",
     "path": "/",
     "component": "E:\\\\Code\\\\Vue\\\\vue-dev\\\\yygh-site\\\\pages\\\\index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_7238070e"
   }
 ]
