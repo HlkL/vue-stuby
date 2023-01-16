@@ -56,16 +56,6 @@ import api from "@/api/index";
 export default {
   data() {
     return {
-      searchObj: {},
-      page: 1,
-      limit: 10,
-
-      hosname: "", //医院名称
-      hostypeList: [], //医院等级集合
-      districtList: [], //地区集合
-
-      hostypeActiveIndex: 0,
-      provinceActiveIndex: 0,
       state: '',
     };
   },
@@ -74,7 +64,6 @@ export default {
       querySearchAsync(queryString, cb) {
       queryString=queryString.trim()
       if (queryString == ""){cb([]);return;}
-      this.searchObj = []
       if(queryString == '') return
       api.getHospName(queryString).then(response => {
         for (let i = 0, len = response.data.length; i <len; i++) {
@@ -91,6 +80,7 @@ export default {
     show(hoscode) {
       window.location.href = '/hospital/' + hoscode
     },
+    
   }
 };
 </script>
