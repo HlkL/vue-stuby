@@ -1,5 +1,12 @@
 [
   {
+    "name": "weixin-callback",
+    "path": "/weixin/callback",
+    "component": "E:\\\\Code\\\\Vue\\\\vue-dev\\\\yygh-site\\\\pages\\\\weixin\\\\callback.vue",
+    "chunkName": "pages/weixin/callback",
+    "_name": "_5bc43950"
+  },
+  {
     "name": "hospital-detail-hoscode",
     "path": "/hospital/detail/:hoscode?",
     "component": "E:\\\\Code\\\\Vue\\\\vue-dev\\\\yygh-site\\\\pages\\\\hospital\\\\detail\\\\_hoscode.vue",
