@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-const user = `/admin/user`
+const user = `/api/user`
 
 export default {
     //用户登录
