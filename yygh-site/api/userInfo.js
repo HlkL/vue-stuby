@@ -17,5 +17,21 @@ export default {
             url: `${user}/sendCode/${email}`,
             method: 'get'
         })
-    }
+    },
+    //用户认证
+    saveUserAuth(userAuah) {
+        return request({
+          url: `${user}/auth/userAuth`,
+          method: 'post',
+          data: userAuah
+        })
+    },
+    //根据userId获取用户信息
+    getUserInfo() {
+        return request({
+          url: `${user}/auth/getUserInfo`,
+          method: 'get'
+        })
+    },
+      
 }

@@ -19,14 +19,16 @@ export default {
             method: 'get'
         })
     },
-    //根据dict_code查询其子节点
+    //根据dictCode获取下级结点
+    // findByDictCode(dictCode)
     queryChlidNodeByDictCode( dictCode ){
         return request({
             url: `${dictPath}/findNode/${dictCode}`,
             method: 'get'
         })
     },
-    //根据id查询子字段数据
+    //根据id获取下级结点 
+    // findByParentId(parentId)
     findChildData( id ){
         return request({
             url: `${dictPath}/findChildData/${id}`,
